@@ -12,4 +12,10 @@ export default defineConfig({
     }),
     tailwindcss(),
   ],
+  server: {
+    fs: {
+      strict: false,
+    },
+  },
+  publicDir: 'public',
 })
