@@ -223,6 +223,10 @@ body {
     }
   }
 
+  html{
+    scroll-behavior: smooth;
+  }
+
   #performance {
     @apply w-dvw h-full overflow-hidden pt-20 lg:pt-20 flex flex-col items-center relative;
 
