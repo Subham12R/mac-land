@@ -9,19 +9,13 @@ import Performance from './components/Performance'
 import Features from './components/Features'
 import Highlights from './components/Highlights'
 import Footer from './components/Footer'
-import Lenis from 'lenis'
 gsap.registerPlugin(ScrollTrigger)
 // Initialize Lenis
 // Initialize Lenis
-const lenis = new Lenis();
 
 // Use requestAnimationFrame to continuously update the scroll
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
 
-requestAnimationFrame(raf);
+
 
 const App = () => {
   return (
