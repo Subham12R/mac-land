@@ -1,13 +1,16 @@
-import { create } from 'zustand'
+import { create } from 'zustand';
 
-const useMackbookStore = create((set) => ({
+const useMacbookStore = create((set) => ({
     color: '#2e2c2e',
-    scale: 0.08,
     setColor: (color) => set({ color }),
-    setScale: (scale) => set({ scale }),
-    
 
-    reset: () => set({ color: '#2e2c2e', scale: 0.08 }),
+    scale: 0.08,
+    setScale: (scale) => set({ scale }),
+
+    texture: '/videos/feature-1.mp4',
+    setTexture: (texture) => set({ texture }),
+
+    reset: () => set({ color: '#2e2c2e', scale: 0.08, texture: '/videos/feature-1.mp4' }),
 }))
 
-export default useMackbookStore
+export default useMacbookStore;
