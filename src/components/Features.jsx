@@ -9,14 +9,17 @@ import {useMediaQuery} from "react-responsive";
 import useMacbookStore from "../store/index.js";
 import {useGSAP} from "@gsap/react";
 import gsap from 'gsap';
+import {ScrollTrigger} from 'gsap/ScrollTrigger';
 
 const ModelScroll = () => {
     const groupRef = useRef(null);
+    const videoRefsRef = useRef([]);
     const isMobile = useMediaQuery({ query: '(max-width: 1024px)'})
     const { setTexture } = useMacbookStore();
 
     // Pre-load all feature videos during component mount
     useEffect(() => {
+        videoRefsRef.current = [];
         featureSequence.forEach((feature) => {
             const v = document.createElement('video');
 
@@ -29,10 +32,22 @@ const ModelScroll = () => {
             });
 
             v.load();
+            videoRefsRef.current.push(v);
         })
-    }, []);
 
+        return () => {
+            videoRefsRef.current.forEach(v => {
+                v.pause();
+                v.src = '';
+                v.load();
+            });
+            videoRefsRef.current = [];
+        };
+    }, []);
     useGSAP(() => {
+        // Register ScrollTrigger plugin
+        gsap.registerPlugin(ScrollTrigger);
+
         // 3D MODEL ROTATION ANIMATION
         const modelTimeline = gsap.timeline({
             scrollTrigger: {
@@ -75,7 +90,7 @@ const ModelScroll = () => {
 
             .call(() => setTexture('/videos/feature-5.mp4'))
             .to('.box5', { opacity: 1, y: 0 })
-    }, []);
+    }, [setTexture]);
 
     return (
         <group ref={groupRef}>
