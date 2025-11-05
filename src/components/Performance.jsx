@@ -77,6 +77,7 @@ const Performance = () => {
                         alt={item.alt || `Performance Image #${index + 1}`}
                     />
                 ))}
+            </div>
             <div className="content">
                 <p>
                     Run graphics-intensive workflows with a responsiveness that keeps up
@@ -90,7 +91,6 @@ const Performance = () => {
                     increase average GPU utilization — driving a huge performance boost
                     for the most demanding pro apps and games.
                 </p>
-            </div>
             </div>
         </section>
     )
